@@ -1,0 +1,150 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.CreateModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<hr />
+@*Nice To have:
+Patient has: Personal Information + Emergency Contact Information
+Currently it is one big scroll of fields and it would be nice to add Emergency Contact Information in another column so we don't have to scroll down so much
+Will require editing: CustomTheme.Css file
+Personal Information: | Emergency Contact Information:
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_two_columns*@
+
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Patient.FirstName" class="control-label">First Name:</label>
+                <input asp-for="Patient.FirstName" class="form-control" />
+                <span asp-validation-for="Patient.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.LastName" class="control-label">Last Name:</label>
+                <input asp-for="Patient.LastName" class="form-control" />
+                <span asp-validation-for="Patient.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.MiddleInitial" class="control-label">Middle Initial:</label>
+                <input asp-for="Patient.MiddleInitial" class="form-control" />
+                <span asp-validation-for="Patient.MiddleInitial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.Title" class="control-label">Title: </label>
+                <input asp-for="Patient.Title" class="form-control" />
+                <span asp-validation-for="Patient.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.DateOfBirth" class="control-label">Date of Birth:</label>
+                <input asp-for="Patient.DateOfBirth" class="form-control" />
+                <span asp-validation-for="Patient.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.Age" class="control-label">Age:</label>
+                <input asp-for="Patient.Age" class="form-control" />
+                <span asp-validation-for="Patient.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.PatientGender" class="control-label">Gender:</label>
+                <input asp-for="Patient.PatientGender" class="form-control" />
+                <span asp-validation-for="Patient.PatientGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.StreetAddress" class="control-label">Street Address:</label>
+                <input asp-for="Patient.StreetAddress" class="form-control" />
+                <span asp-validation-for="Patient.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.City" class="control-label">City:</label>
+                <input asp-for="Patient.City" class="form-control" />
+                <span asp-validation-for="Patient.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.State" class="control-label">State:</label>
+                <input asp-for="Patient.State" class="form-control" />
+                <span asp-validation-for="Patient.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.ZipCode" class="control-label">Zip Code:</label>
+                <input asp-for="Patient.ZipCode" class="form-control" />
+                <span asp-validation-for="Patient.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.PhoneNumberPrimary" class="control-label">Primary Phone Number:</label>
+                <input asp-for="Patient.PhoneNumberPrimary" class="form-control" />
+                <span asp-validation-for="Patient.PhoneNumberPrimary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.PhoneNumberSecondary" class="control-label">Secondary Phone Number:</label>
+                <input asp-for="Patient.PhoneNumberSecondary" class="form-control" />
+                <span asp-validation-for="Patient.PhoneNumberSecondary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.SSN" class="control-label">Social Security Number:</label>
+                <input asp-for="Patient.SSN" class="form-control" />
+                <span asp-validation-for="Patient.SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.Email" class="control-label">E-mail:</label>
+                <input asp-for="Patient.Email" class="form-control" />
+                <span asp-validation-for="Patient.Email" class="text-danger"></span>
+            </div>
+
+            <hr /> 
+            <div class="text-center">Emergency Contact Information</div>
+            <hr />
+
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactFirstName" class="control-label">First Name:</label>
+                <input asp-for="Patient.FamilyContactFirstName" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactSecondName" class="control-label">Last Name:</label>
+                <input asp-for="Patient.FamilyContactSecondName" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactSecondName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactPhoneNumber" class="control-label">Phone Number:</label>
+                <input asp-for="Patient.FamilyContactPhoneNumber" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactStreetAddress" class="control-label">Street Address:</label>
+                <input asp-for="Patient.FamilyContactStreetAddress" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactStreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactCity" class="control-label">City:</label>
+                <input asp-for="Patient.FamilyContactCity" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactState" class="control-label">State:</label>
+                <input asp-for="Patient.FamilyContactState" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patient.FamilyContactZipCode" class="control-label">Zip Code:</label>
+                <input asp-for="Patient.FamilyContactZipCode" class="form-control" />
+                <span asp-validation-for="Patient.FamilyContactZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

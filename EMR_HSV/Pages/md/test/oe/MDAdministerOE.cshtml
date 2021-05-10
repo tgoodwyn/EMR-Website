@@ -1,0 +1,585 @@
+﻿@page
+@model EMR_HSV.Pages.md.test.oe.CreateModel
+@{
+}
+
+<h2>Administer</h2>
+
+<h3>Ocular Exam</h3>
+<hr />
+
+<form method="post">
+    <label class="control-label">Select Patient</label>
+    <div class="form-group">
+        <select id="list_of_patients" name="patientID" asp-items="Model.PatientOptions"></select>
+    </div>
+    <br />
+
+    <div>
+        <label>POSTERIOR SEGMENT</label>
+        <div class="form-group">
+            <label asp-for="CreatedTest.Vitreous" class="control-label"></label>
+
+            <!-- use this as example -->
+            <select class="form-control" asp-for="CreatedTest.Vitreous">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+                <!-- -->
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.Macula" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.Macula">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.Vasculature" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.Vasculature">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Posterior Pole</label>
+            <select class="form-control" asp-for="CreatedTest.PosteriorPole">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Peripheral Retina</label>
+            <select class="form-control" asp-for="CreatedTest.PeripheralRetina">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Misc Retina</label>
+            <select class="form-control" asp-for="CreatedTest.MiscRetina">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Diabetic Eval</label>
+            <select class="form-control" asp-for="CreatedTest.DiabeticEval">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label> HTN Eval</label>
+            <select class="form-control" asp-for="CreatedTest.HTNEval">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.ARMD" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.ARMD">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.custom1" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.custom1">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.custom2" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.custom2">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedTest.custom3" class="control-label"></label>
+            <select class="form-control" asp-for="CreatedTest.custom3">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+            <br />
+            <label>OPHTHALMIC INDICATORS</label>
+        </div>
+        <div class="form-group">
+            <label>Spontaneous Venous Pulsation OD</label>
+            <select class="form-control" asp-for="CreatedTest.SpontaneousVenousPulsationOD">
+                <option value="X">X</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Spontaneous Venous Pulsation OS</label>
+            <select class="form-control" asp-for="CreatedTest.SpontaneousVenousPulsationOS">
+                <option value="X">X</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Foveal Reflex OD</label>
+            <select class="form-control" asp-for="CreatedTest.FovealReflexOD">
+                <option value="X">X</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Foveal Reflex OS</label>
+            <select class="form-control" asp-for="CreatedTest.FovealReflexOS">
+                <option value="X">X</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+
+        <!--Fundus-->
+        <label>FUNDUS EVALUATION METHOD</label>
+        <br />
+        <label>Fundus Method</label>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="0" />
+            <label class="form-check-label">
+                Not Performed
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="1" />
+            <label class="form-check-label">
+                Small Pupil Bio
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="2" />
+            <label class="form-check-label">
+                Dilated Eval
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="3" />
+            <label class="form-check-label">
+                Undilated Eval
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="4" />
+            <label class="form-check-label">
+                Optomap Imaging
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusMethod" class="form-check-input" type="radio" value="5" />
+            <label class="form-check-label">
+                DFE with Optomap
+            </label>
+        </div>
+
+        <!--Fundus Dilation-->
+        <div class="form-group">
+            <label>Fundus Dilation</label>
+            <select class="form-control" asp-for="CreatedTest.FundusDilation">
+                <option value="1gtt">1gtt</option>
+                <option value="2gtt">2gtt</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Dilating Agent</label>
+            <select class="form-control" asp-for="CreatedTest.DilatingAgent">
+                <option value="Tropicamide 1%">Tropicamide 1%</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
+            </select>
+        </div>
+
+        <!--Fundus Evaluation-->
+        <label>Evaluated With:</label>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluation78D" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                78D lens
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluation90D" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                90D lens
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluation20D" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                20D Bio Lens
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluationPR" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                PR 2.2 Bio Lens
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluationScleral" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Scleral Depression
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluationDirect" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Direct Ophthalmoscope
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusEvaluationOther" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Other
+            </label>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="CreatedTest.FundusEvaluationOtherString" class="form-control" type="text" />
+            <span asp-validation-for="CreatedTest.FundusEvaluationOtherString" class="text-danger"></span>
+        </div>
+
+
+        <!--Fundus Notes-->
+        <label>Notes:</label>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesAdvised" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Patient Advised of Effects of DFE
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesRescheduled" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                DFE to be Rescheduled
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesDeclined" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                DFE Declined
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesPerformed" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Fundus Imaging Performed
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesRefused" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                DFE Refused AME
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesNotIndicated" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                DFE Not Indicated
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesContraindicated" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                DFE Contraindicated
+            </label>
+        </div>
+        <div class="form-check">
+            <input asp-for="CreatedTest.FundusNotesRecent" class="form-check-input" type="checkbox"/>
+            <label class="form-check-label">
+                Recent DFE
+            </label>
+        </div>
+    </div>
+    <!--CUP DISC RATIO TOOL-->
+    <br />
+    <label>CUP/DISC RATIO TOOL</label>
+    <div class="form-group">
+        <!-- NOTES FOR KOBE 4/08-->
+        <!-- the "asp-for" tag helper basically just auto generates standard html attribute (the dark green attributes are all "tag helpers", the light blue attributes are standard html attributes)-->
+        <!-- "asp-for" in label elements autogenerates the "for" attribute, as well as the text that goes inside the label. if you want a custom label - like i created for this first element "OD Horizontal: 0.5" you just need to delete the "asp-for" attribute, and write a "for" attribute in its place. the "for" attr of the label element should match the "id" attr of the input element. the label has its own id - "OHDLabel", which will be used in the script to dynamically update the value-->
+        <!-- "asp-for" in input elements autogenerates the name and id attributes. For this first one, I hardcoded the name and id of the input element, but I used the values that would have been autogenerated. I only did this to show you what the id attr of the input element will actually be, because you'll need that, as well as the label id, in the script at bottom of this page. Note that for the id attr it replaces the "." with a "_", but for the name attr it keeps the "."-->
+        <label id="ODHLabel" for="CreatedTest_ODSliderHorizontal" class="control-label">OD Horizontal: 0.5</label>
+        <input name="CreatedTest.ODSliderHorizontal" id="CreatedTest_ODSliderHorizontal" type="range" class="form-range" min="0" max="1" step="0.05">
+    </div>
+    <div class="form-group">
+        <label id="OSHLabel" for="CreatedTest.OSSliderHorizontal" class="control-label">OS Horizontal: 0.5</label>
+        <input name="CreatedTest.OSSliderHorizontal" id="CreatedTest_OSSliderHorizontal" type="range" class="form-range" min="0" max="1" step="0.05">
+    </div>
+    <div class="form-group">
+        <label id="ODVLabel" for="CreatedTest.ODSliderVertical" class="control-label">OD Vertical: 0.5</label>
+        <input name="CreatedTest.ODSliderVertical" id="CreatedTest_ODSliderVertical" type="range" class="form-range" min="0" max="1" step="0.05">
+    </div>
+    <div class="form-group">
+        <label id="OSVLabel" for="CreatedTest.OSSliderVertical" class="control-label">OS Vertical: 0.5</label>
+        <input name="CreatedTest.OSSliderVertical" id="CreatedTest_OSSliderVertical" type="range" class="form-range" min="0" max="1" step="0.05">
+    </div>
+
+    <div>
+        <!--Optic nerve-->
+        <label>OPTIC NERVE HEAD ASSESSMENT</label>
+        <div class="form-group">
+            <label>Optic Nerve</label>
+            <select class="form-control" asp-for="CreatedTest.OpticNerve">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="HIGH">HIGH</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nerve Fiber Layer</label>
+            <select class="form-control" asp-for="CreatedTest.NerveFiberLayer">
+                <option value="NOT CHECKED">NOT CHECKED</option>
+                <option value="NORM">NORM</option>
+                <option value="LOW">LOW</option>
+                <option value="HIGH">HIGH</option>
+                <option value="CRITICAL">CRITICAL</option>
+            </select>
+        </div>
+
+        <!--Optic Nerve Descriptors-->
+        <label>Optic Nerve Descriptors</label>
+        <br />
+
+        <div class="table">
+            <table style="        width: 50%;">
+                <tr>
+                    <th>Descriptor</th>
+                    <th>OD</th>
+                    <th>OS</th>
+                </tr>
+                <tr></tr>
+                <td>Deep/Lamina</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.DeepLaminaOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.DeepLaminaOS" />
+                    </div>
+                </td>
+                </tr>
+                <tr></tr>
+                <td>Shallow</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.ShallowOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.ShallowOS" />
+                    </div>
+                </td>
+                </tr>
+                <td>Round</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.RoundOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.RoundOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Oval</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.OvalOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.OvalOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Temp. sloping</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.TempSlopingOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.TempSlopingOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Undermining</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.UnderminingOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.UnderminingOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Peripap Atrophy</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.PeripapAtrophyOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.PeripapAtrophyOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Scleral Cresent</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.ScleralCresentOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.ScleralCresentOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Pigment Cresent</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.PigmentCresentOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.PigmentCresentOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Optic Pit</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.OpticPitOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.OpticPitOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Myelination</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.MuyelinationOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.MuyelinationOS" />
+                    </div>
+                </td>
+                </tr>
+                </tr>
+                <td>Glial Remnants</td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.GlialRemnantsOD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="CreatedTest.GlialRemnantsOS" />
+                    </div>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section scripts {
+
+    <!--KOBE - this is where to put the rest of your slider functions-->
+
+    <script>
+        // each line translated on the side
+        $("#CreatedTest_ODSliderHorizontal").change(function () { // when the element with the id "CreatedTest_ODSliderHorizontal" changes, do:
+            measurementValue = this.value; // get that same element's value
+            $('#ODHLabel').text("OD Horizontal: " + measurementValue); // set the text of the element with id 'ODHLabel' to display that value
+        });
+    </script>
+
+    <script>
+        // each line translated on the side
+        $("#CreatedTest_OSSliderHorizontal").change(function () { // when the element with the id "CreatedTest_ODSliderHorizontal" changes, do:
+            measurementValue = this.value; // get that same element's value
+            $('#OSHLabel').text("OS Horizontal: " + measurementValue); // set the text of the element with id 'ODHLabel' to display that value
+        });
+    </script>
+
+    <script>
+        // each line translated on the side
+        $("#CreatedTest_ODSliderVertical").change(function () { // when the element with the id "CreatedTest_ODSliderHorizontal" changes, do:
+            measurementValue = this.value; // get that same element's value
+            $('#ODVLabel').text("OD Vertical: " + measurementValue); // set the text of the element with id 'ODHLabel' to display that value
+        });
+    </script>
+
+    <script>
+        // each line translated on the side
+        $("#CreatedTest_OSSliderVertical").change(function () { // when the element with the id "CreatedTest_ODSliderHorizontal" changes, do:
+            measurementValue = this.value; // get that same element's value
+            $('#OSVLabel').text("OS Vertical: " + measurementValue); // set the text of the element with id 'ODHLabel' to display that value
+        });
+    </script>
+}

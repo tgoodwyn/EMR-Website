@@ -1,0 +1,132 @@
+﻿@page
+@model EMR_HSV.Pages.md.prescribe.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].sphereOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].cylinderOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].axisOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].addOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].prismOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].prismBaseOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].nearMeasurementOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].farMeasurementOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].sphereOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].cylinderOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].axisOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].addOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].prismOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].prismBaseOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].nearMeasurementOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].farMeasurementOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prescription[0].Patient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Prescription) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sphereOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cylinderOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.axisOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prismOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prismBaseOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nearMeasurementOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.farMeasurementOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sphereOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cylinderOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.axisOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prismOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prismBaseOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nearMeasurementOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.farMeasurementOS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

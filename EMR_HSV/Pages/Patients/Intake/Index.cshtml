@@ -1,0 +1,49 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.Intake.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Patient Intake</h1>
+</div>
+
+<br />
+<div style="text-align: center">
+    <label class="control-label">Select Patient</label>
+    <div class="form-group">
+        <select id="list_of_patients" name="CreatedMedicalHistory.PatientID" asp-items="Model.PatientOptions"></select>
+    </div>
+    <div class="link">
+        <a id="edit_mdh" href="#">Create/Edit medical history</a>
+    </div>
+    <div style="margin-top: 15px;" class="link">
+
+        <a id="medical_history" href="#">View medical history</a>
+        <br />
+    </div>
+    <br />
+    <br />
+
+</div>
+@*<a id="past_tests" href="#">View past tests</a>
+    <br />
+    <br />
+    <a id="prescription" href="#">View prescription</a>
+    <br />
+    <br />*@
+
+@section scripts {
+    <script>
+        $('#list_of_patients').on('change', function (e) {
+
+            var valueSelected = this.value;
+            $("#edit_mdh").attr("href", `/Patients/Intake/Edit?id=${valueSelected}`);
+            $("#create_mdh").attr("href", `/Patients/Intake/Create?id=${valueSelected}`);
+            $("#medical_history").attr("href", `/Patients/Intake/MDHistory?id=${valueSelected}`);
+            $("#past_tests").attr("href", `/Patients/History/MDPastTests?id=${valueSelected}`);
+            $("#prescription").attr("href", `/Patients/History/MDPrescription?id=${valueSelected}`);
+        });
+    </script>
+}

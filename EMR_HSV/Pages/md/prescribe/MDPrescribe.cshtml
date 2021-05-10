@@ -1,0 +1,151 @@
+﻿@page
+@model EMR_HSV.Pages.md.prescribe.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Prescription</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <style>
+            th, td {
+                padding: 15px;
+                border: 1px solid black;
+            }
+        </style>
+        <form method="post">
+            <label class="control-label">Select Patient</label>
+            <div class="form-group">
+                <select id="list_of_patients" name="patientID" asp-items="Model.PatientOptions"></select>
+            </div>
+            <br />
+            <table style="        width: 100%;">
+                <tr>
+                    <th>Measure</th>
+                    <th>OD</th>
+                    <th>OS</th>
+                </tr>
+                <tr>
+                    <td>Sphere</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.sphereOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.sphereOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cylinder</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.cylinderOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.cylinderOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Axis</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.axisOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.axisOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Add</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.addOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.addOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prism</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.prismOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.prismOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prism Base</td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.prismBaseOD" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="number" min="0" max="1" step="0.1" class="form-control" name="Prescription.prismBaseOS" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Near</td>
+                    <td>
+                        <div class="form-group">
+                            <input style="width: 49%; float: left;" type="number" min="1" max="40" step="1" class="form-control" name="Prescription.nearMeasurementOD" /><span style="width: 49%; float: left;">/15.7''</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input style="width: 49%; float: left;" type="number" min="1" max="40" step="1" class="form-control" name="Prescription.nearMeasurementOS" /><span style="width: 49%; float: left;">/15.7''</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Far</td>
+                    <td>
+                        <div class="form-group">
+                            <input style="width: 49%; float: left;" type="number" min="1" max="40" step="1" class="form-control" name="Prescription.farMeasurementOD" /><span style="width: 49%; float: left;">/20'</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input style="width: 49%; float: left;" type="number" min="1" max="40" step="1" class="form-control" name="Prescription.farMeasurementOS" /><span style="width: 49%; float: left;">/20'</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+}

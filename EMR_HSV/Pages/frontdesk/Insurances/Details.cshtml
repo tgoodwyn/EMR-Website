@@ -1,0 +1,68 @@
+﻿@page
+@model EMR_HSV.Pages.frontdesk.Insurances.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Insurance Details</h1>
+    <h3 class="text-center">Details</h3>
+</div>
+<div class="container-md">
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Insurance.Patient.FullName
+        </dd>
+        <dt class="col-sm-2">
+            Insurance Provider:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Contract Number:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.ContractNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Group Number:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.WorkNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Insurance.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.Address)
+        </dd>
+        <dt class="col-sm-2">
+            Contact Number:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.Contact)
+        </dd>
+        <dt class="col-sm-2">
+            Co-pay:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.Copay)
+        </dd>
+        <dt class="col-sm-2">
+            Effective Date:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Insurance.EffectiveDate)
+        </dd>
+    </dl>
+</div>
+<div class="text-center">
+    <a asp-page="./Edit" asp-route-id="@Model.Insurance.Id" class="btn btn-success">Edit</a> |
+    <a asp-page="./Index" class="btn btn-danger">Cancel</a>
+</div>

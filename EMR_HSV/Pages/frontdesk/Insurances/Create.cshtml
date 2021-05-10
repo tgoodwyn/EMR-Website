@@ -1,0 +1,69 @@
+﻿@page
+@model EMR_HSV.Pages.frontdesk.Insurances.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Add Insurance</h1>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Insurance.PatientId" class="control-label">Select Patient:</label>
+                <select asp-for="Insurance.PatientId" class="form-control" asp-items="@(new SelectList(Model.Patients,"ID","FullName"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.Name" class="control-label">Insurance Provider Name:</label>
+                <input asp-for="Insurance.Name" class="form-control" />
+                <span asp-validation-for="Insurance.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.ContractNumber" class="control-label">Insurance Contract Number:</label>
+                <input asp-for="Insurance.ContractNumber" class="form-control" />
+                <span asp-validation-for="Insurance.ContractNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.WorkNumber" class="control-label">Insurance Group Number:</label>
+                <input asp-for="Insurance.WorkNumber" class="form-control" />
+                <span asp-validation-for="Insurance.WorkNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.Address" class="control-label">Insurance Address:</label>
+                <input asp-for="Insurance.Address" class="form-control" />
+                <span asp-validation-for="Insurance.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.Contact" class="control-label">Insurance Contact Phone Number:</label>
+                <input asp-for="Insurance.Contact" class="form-control" />
+                <span asp-validation-for="Insurance.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.Copay" class="control-label">Co-Pay:</label>
+                <input asp-for="Insurance.Copay" class="form-control" />
+                <span asp-validation-for="Insurance.Copay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Insurance.EffectiveDate" class="control-label">Effective Date:</label>
+                <input asp-for="Insurance.EffectiveDate" class="form-control" />
+                <span asp-validation-for="Insurance.EffectiveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

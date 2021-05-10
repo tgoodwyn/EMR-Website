@@ -1,0 +1,113 @@
+﻿@page
+@model EMR_HSV.Pages.md.prescribe.temp.stealModel
+
+@{
+    ViewData["Title"] = "steal";
+}
+
+<h1>steal</h1>
+
+<h4>Prescription</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Prescription.sphereOD" class="control-label"></label>
+                <input asp-for="Prescription.sphereOD" class="form-control" />
+                <span asp-validation-for="Prescription.sphereOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.sphereOS" class="control-label"></label>
+                <input asp-for="Prescription.sphereOS" class="form-control" />
+                <span asp-validation-for="Prescription.sphereOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.cylinderOD" class="control-label"></label>
+                <input asp-for="Prescription.cylinderOD" class="form-control" />
+                <span asp-validation-for="Prescription.cylinderOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.cylinderOS" class="control-label"></label>
+                <input asp-for="Prescription.cylinderOS" class="form-control" />
+                <span asp-validation-for="Prescription.cylinderOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.axisOD" class="control-label"></label>
+                <input asp-for="Prescription.axisOD" class="form-control" />
+                <span asp-validation-for="Prescription.axisOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.axisOS" class="control-label"></label>
+                <input asp-for="Prescription.axisOS" class="form-control" />
+                <span asp-validation-for="Prescription.axisOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.addOD" class="control-label"></label>
+                <input asp-for="Prescription.addOD" class="form-control" />
+                <span asp-validation-for="Prescription.addOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.addOS" class="control-label"></label>
+                <input asp-for="Prescription.addOS" class="form-control" />
+                <span asp-validation-for="Prescription.addOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.prismOD" class="control-label"></label>
+                <input asp-for="Prescription.prismOD" class="form-control" />
+                <span asp-validation-for="Prescription.prismOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.prismOS" class="control-label"></label>
+                <input asp-for="Prescription.prismOS" class="form-control" />
+                <span asp-validation-for="Prescription.prismOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.prismBaseOD" class="control-label"></label>
+                <input asp-for="Prescription.prismBaseOD" class="form-control" />
+                <span asp-validation-for="Prescription.prismBaseOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.prismBaseOS" class="control-label"></label>
+                <input asp-for="Prescription.prismBaseOS" class="form-control" />
+                <span asp-validation-for="Prescription.prismBaseOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.nearMeasurementOD" class="control-label"></label>
+                <input asp-for="Prescription.nearMeasurementOD" class="form-control" />
+                <span asp-validation-for="Prescription.nearMeasurementOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.nearMeasurementOS" class="control-label"></label>
+                <input asp-for="Prescription.nearMeasurementOS" class="form-control" />
+                <span asp-validation-for="Prescription.nearMeasurementOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.farMeasurementOD" class="control-label"></label>
+                <input asp-for="Prescription.farMeasurementOD" class="form-control" />
+                <span asp-validation-for="Prescription.farMeasurementOD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.farMeasurementOS" class="control-label"></label>
+                <input asp-for="Prescription.farMeasurementOS" class="form-control" />
+                <span asp-validation-for="Prescription.farMeasurementOS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.patientID" class="control-label"></label>
+                <select asp-for="Prescription.patientID" class ="form-control" asp-items="ViewBag.patientID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,56 @@
+﻿@page
+@model EMR_HSV.Pages.frontdesk.SchedulerModel
+@{
+}
+
+
+<h3>Schedule a patient for today</h3>
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Patient</label>
+                    <select name="idOfSelectedPatient" class="form-control">
+                        <option>--Select Patient--</option>
+                        @foreach (var patient in Model.AvailablePatients)
+                        {
+                            <option value=@patient.ID>@(patient.FirstName + " " + patient.LastName)</option>
+                        }
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Appointment.AppointmentDate" class="control-label"></label>
+                    <input asp-for="Appointment.AppointmentDate" class="form-control" />
+                    <span asp-validation-for="Appointment.AppointmentDate" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+            <label>Appointment Time</label>
+            <select class="form-control" name="Appointment.TimeOfArrival">
+                <option value="8">8am</option>
+                <option value="9">9am</option>
+                <option value="10">10am</option>
+            </select>
+        </div>*@
+
+                @for (int i = 0; i < 8; i++)
+                {
+                    <input id=@("time"+i) type="radio" name="selectedTimeSlot" value="@i" /><label for="@("time"+i)">time slot: @i </label><br />
+                }
+                @*<div class="form-group">
+            <label>Date</label>
+            <input type="date" name="Appointment.AppointmentDate" class="form-control" />
+        </div>*@
+                <input type="submit" value="Assign time" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

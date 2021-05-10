@@ -1,0 +1,155 @@
+﻿@page
+@model EMR_HSV.Pages.md.eye.test.va.CreateModel
+@{
+}
+
+<h3>Visual Acuity exam</h3>
+<hr />
+
+<form method="post">
+    <label class="control-label">Select Patient</label>
+    <div class="form-group">
+        <select id="list_of_patients" name="patientID" asp-items="Model.PatientOptions"></select>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="CreatedTest.whichEyes" class="control-label">Select eyes to test</label>
+        <br />
+        <select id="" asp-for="CreatedTest.whichEyes">
+            <option>--Select--</option>
+            <option value="0">OD</option>
+            <option value="1">OS</option>
+            <option value="2">OU</option>
+        </select>
+    </div>
+    <div class="form-group">
+
+        <label class="control-label">Select view distance </label>
+        <div class="form-check">
+            <input id="far" name="CreatedTest.distanceOrNear" class="form-check-input" type="radio" value="0" />
+            <label class="form-check-label" for="far">
+                Far (20 feet)
+            </label>
+        </div>
+        <div class="form-check">
+            <input id="Near" name="CreatedTest.distanceOrNear" class="form-check-input" type="radio" value="1" />
+            <label class="form-check-label" for="Near">
+                Near (15.7 inches)
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Correctors">
+            Correctors used?
+        </label>
+        <input id="Correctors" asp-for="CreatedTest.correctorsUsed" type="checkbox" value="true" />
+    </div>
+    <div class="form-group">
+
+        <label for="measurement">Measurement (between 1 and 200):</label>
+        <input type="number" id="measurement" name="CreatedTest.measurement" min="1" max="200">
+    </div>
+    <div class="form-group">
+
+        <label for="pinhole">
+            Pinhole used?
+        </label>
+        <input id="pinhole" asp-for="CreatedTest.pinholeUsed" type="checkbox" value="true" />
+        @*</div>
+            <div class="form-group">*@
+        <br />
+        <label style="display: none;" for="pinholeMeasurement">Pinhole Measurement (between 1 and 200):</label>
+        <input style="display: none;" type="number" id="pinholeMeasurement" name="CreatedTest.pinholeMeasurement" min="1" max="200">
+    </div>
+
+    @*<p id="z">pre</p>*@
+    <h5>Result:</h5>
+    <h6 id="displayString"></h6>
+    <input id="finalResultString" name="CreatedTest.finalResultString" type="text" hidden />
+    <br />
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="Record exam" class="btn btn-primary" />
+    </div>
+
+</form>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $("#pinhole").click(function () {
+                $("#pinholeMeasurement").toggle(this.checked);
+                $("label[for='pinholeMeasurement']").toggle(this.checked);
+            });
+
+            var distanceOrNearValue = 0;
+            $('[name="CreatedTest.distanceOrNear"]').click(function () {
+
+                distanceOrNearValue = $('input[name="CreatedTest.distanceOrNear"]:checked').val();
+                
+                buildResultString();
+            });
+
+            var eyesSelectedValue = 0;
+            var eyesOptions = ["OD", "OS", "OU"];
+            $('[name="CreatedTest.whichEyes"]').change(function () {
+                eyesSelectedValue = $('[name="CreatedTest.whichEyes"]').val();
+                
+                buildResultString();
+            });
+
+
+            var measurementValue = 20;
+            $($("#measurement")).change(function () {
+                measurementValue = $("#measurement").val();
+
+                buildResultString();
+            });
+
+
+
+            var correctorsValue = false;
+            $('#Correctors').change(function () {
+                correctorsValue = $(this).is(':checked');
+                
+                buildResultString();
+            });
+
+            var pinholeValue = false;
+            $('#pinhole').change(function () {
+                pinholeValue = $(this).is(':checked');
+
+                buildResultString();
+            });
+
+            var pinholeMeasurementValue = 20;
+            $($("#pinholeMeasurement")).change(function () {
+                pinholeMeasurementValue = $("#pinholeMeasurement").val();
+
+                buildResultString();
+            });
+
+            Correctors
+
+            //.change(function () {
+            function buildResultString() {
+                var displayString = "";
+                displayString += (distanceOrNearValue == 0) ? "D" : "N";
+                displayString += correctorsValue ? "cc" : "sc";
+                displayString += eyesOptions[eyesSelectedValue];
+                displayString += (" "+ measurementValue + "/20");
+
+                displayString += pinholeValue ? " PH" : "";
+                if (pinholeValue) {
+                    displayString += (" " + pinholeMeasurementValue + "/20");
+                }
+                $("#displayString").text(displayString);
+                $("#finalResultString").val(displayString);
+            }
+        });
+
+    </script>
+}

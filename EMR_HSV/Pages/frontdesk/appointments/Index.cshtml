@@ -1,0 +1,54 @@
+﻿@page
+@model EMR_HSV.Pages.frontdesk.appointments.IndexModel
+@using Util
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Appointments</h1>
+</div>
+<h6 class="text-center">
+    <a asp-page="Create" >Add New Appointment</a>
+</h6>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Appointment Date
+            </th>
+            <th>
+                Appointment Time
+            </th>
+            <th>
+                Doctor Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Appointment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FullName)
+            </td>
+            <td>
+                @item.AppointmentDate.ToString("dd MMMM yyyy")
+            </td>
+            <td>
+                @Util.ConverTime(item.ArrivalTime)
+            </td>
+            <td>
+                @item.DoctorToSee.FullName
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AppointmentID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AppointmentID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AppointmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

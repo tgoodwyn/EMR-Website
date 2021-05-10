@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "DB_EMR_REAL"
+    },
+    "mssql3": {
+      "type": "mssql",
+      "connectionId": "EMR_HSVContext"
+    }
+  }
+}

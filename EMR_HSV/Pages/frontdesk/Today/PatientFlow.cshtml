@@ -1,0 +1,106 @@
+﻿@page
+@model EMR_HSV.Pages.frontdesk.Today.PatientFlowModel
+@using Util 
+@{
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">Day Tracker</h1>
+    <h4 class="text-center">Date: @Models.DayTracker.Today.ToString("dddd, dd MMMM yyyy")</h4>
+</div>
+
+<h5 > The following patients have appointments today:</h5>
+    @foreach (var appointment in Model.TodaysAppointments)
+    {
+<h5 style="margin-top: 20px;">
+    @(appointment.Patient.FullName)
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn-sm btn-info" data-toggle="modal" data-target="#myModal-@appointment.Patient.ID"><i class="fa fa-info-circle"></i></button>
+    <!-- Modal -->
+    <div id="myModal-@appointment.Patient.ID" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="button-box btn-group-sm text-center">
+                        <table class="table table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td><a asp-page="/Patients/Details" asp-route-id="@appointment.Patient.ID" class="btn btn-info" role="button">Additional Information</a></td>
+                                </tr>
+
+                                @if (appointment.Patient.Insurance != null)
+                                {
+                                    <tr>
+                                        <td><a asp-page="/frontdesk/insurances/details" asp-route-id="@appointment.Patient.Insurance.Id" class="btn btn-info" role="button">Insurance Information</a></td>
+                                    </tr>
+                                }
+                                @if (appointment.Patient.MedicalHistory != null)
+                                {
+                                    <tr>
+                                        <td><a asp-page="/Patients/Intake/MDHistory" asp-route-id="@appointment.Patient.ID" class="btn btn-info" role="button">Medical History</a></td>
+                                    </tr>
+                                }
+</table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</h5>
+        <h6>@("Seeing: "+appointment.DoctorToSee.FullName)</h6>
+        <h6>@("Reason for visit: "+appointment.reasonForVisit)</h6>
+        <h6>@("Arrival time: "+ @Util.ConverTime(appointment.ArrivalTime))</h6>
+    }
+<hr />
+<h3 style="margin-top: 2px;">Track patient status</h3>
+
+<form method="post">
+
+    <table style="width: 100%">
+        <tr>
+            <th>  Appointment Time        </th>
+            <th>  Patient Name     </th>
+            <th>  Arrived        </th>
+            <th>  In waiting room </th>
+            <th>  In exam room     </th>
+            <th>  Checked out/Departed        </th>
+        </tr>
+
+        @foreach (var appointment in Model.TodaysAppointments)
+        {
+            <tr>
+                <td>
+                    @Util.ConverTime(appointment.ArrivalTime)
+                </td>
+                <td>
+                    @(appointment.Patient.FirstName + " " + appointment.Patient.LastName)
+                </td>
+                <td>
+                    <input type="checkbox" name="arrivalCheckBoxes" value="@appointment.AppointmentID" checked="@appointment.hasArrived" />
+                </td>
+                <td>
+                    <input type="checkbox" name="checkedinCheckBoxes" value="@appointment.AppointmentID" checked="@appointment.hasBeenCheckedIn" />
+                </td>
+                <td>
+                    <input type="checkbox" name="withDoctorCheckBoxes" value="@appointment.AppointmentID" checked="@appointment.isWithDoctor" />
+                    <span>@appointment.DoctorToSee.FullName</span>
+                </td>
+                <td>
+                    <input type="checkbox" name="finishedCheckBoxes" value="@appointment.AppointmentID" checked="@appointment.isFinished" />
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <br />
+    <input type="submit" value="Commit status updates" class="btn btn-primary" />
+</form>

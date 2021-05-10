@@ -1,0 +1,124 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.Intake.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MedicalHistory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label for="CreatedMedicalHistory.PrimaryCareDoctor" class="control-label">Primary Care Doctor:</label>
+                @if (Model.CurrentMedicalHistory != null)
+                {
+                    <input type="text" id="CreatedMedicalHistory.PrimaryCareDoctor" name="CreatedMedicalHistory.PrimaryCareDoctor" class="form-control" value="@Model.CurrentMedicalHistory.PrimaryCareDoctor" />
+                }
+                else
+                {
+                    <input type="text" id="CreatedMedicalHistory.PrimaryCareDoctor" name="CreatedMedicalHistory.PrimaryCareDoctor" class="form-control" />
+                }
+
+            </div>
+            <br />
+
+            <div>
+                <label for="ListOfPastTreatments" class="control-label">Past Treatments</label>
+                <div id="PastTreatmentsBlock" class="form-group">
+                    @if (Model.CurrentMedicalHistory != null)
+                    {
+                        @foreach (var t in Model.ListOfPastTreatments)
+                        {
+                            <input type="text" name="ListOfPastTreatments" value="@t" /><br />
+                        }
+                    }
+
+                </div>
+                <div class="btn btn-secondary" onclick="anotherPastTreatment()">Add another</div>
+            </div>
+            <br />
+
+            <div>
+                <label for="ListOfPlannedTreatments" class="control-label">Future Treatments</label>
+                <div id="PlannedTreatmentsBlock" class="form-group">
+                    @if (Model.CurrentMedicalHistory != null)
+                    {
+                        @foreach (var t in Model.ListOfPlannedTreatments)
+                        {
+                            <input type="text" name="ListOfPlannedTreatments" value="@t" /><br />
+                        }
+                    }
+
+                </div>
+                <div class="btn btn-secondary" onclick="anotherPlannedTreatment()">Add another</div>
+            </div>
+            <br />
+
+            <div>
+                <label for="ListOfCurrentMedications" class="control-label">Current Medications</label>
+                <div id="CurrentMedicationsBlock" class="form-group">
+                    @if (Model.CurrentMedicalHistory != null)
+                    {
+                        @foreach (var t in Model.ListOfCurrentMedications)
+                        {
+                            <input type="text" name="ListOfCurrentMedications" value="@t" /><br />
+                        }
+                    }
+
+
+                </div>
+                <div class="btn btn-secondary" onclick="anotherCurrentMedication()">Add another</div>
+            </div>
+            <br />
+
+            <div>
+                <label for="ListOfIllnessAndConditions" class="control-label">Chronic Illnesses and Medical Conditions</label>
+                <div id="IllnessAndConditionsBlock" class="form-group">
+                    @if (Model.CurrentMedicalHistory != null)
+                    {
+                        @foreach (var t in Model.ListOfIllnessAndConditions)
+                        {
+                            <input type="text" name="ListOfIllnessAndConditions" value="@t" /><br />
+                        }
+                    }
+
+                </div>
+
+                <div class="btn btn-secondary" onclick="anotherIllnessAndCondition()">Add another</div>
+            </div>
+            <br />
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        function anotherIllnessAndCondition() {
+            $("#IllnessAndConditionsBlock").append('<input type="text" name="ListOfIllnessAndConditions" /><br />');
+        }
+        function anotherCurrentMedication() {
+            $("#CurrentMedicationsBlock").append('<input type="text" name="ListOfCurrentMedications" /><br />');
+        }
+        function anotherPlannedTreatment() {
+            $("#PlannedTreatmentsBlock").append('<input type="text" name="ListOfPlannedTreatments" /><br />');
+        }
+        function anotherPastTreatment() {
+            $("#PastTreatmentsBlock").append('<input type="text" name="ListOfPastTreatments" /><br />');
+        }
+    </script>
+}

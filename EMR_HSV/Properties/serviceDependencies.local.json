@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/emr-server/databases/DB_EMR_REAL",
+      "type": "mssql.azure",
+      "connectionId": "DB_EMR_REAL",
+      "secretStore": "LocalSecretsFile"
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/emr-server/databases/DB_EMR_REAL",
+      "type": "mssql.azure",
+      "connectionId": "EMR_HSVContext",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}

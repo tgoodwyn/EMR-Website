@@ -1,0 +1,176 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.History.MDPastTestsModel
+@{
+}
+
+<br />
+<h3> Past test results for @Model.Patient.FullName</h3>
+<hr />
+
+
+@foreach (var appointment in Model.Patient.PastAppointments)
+{
+    <h5 style="margin-top: 20px">Information from appointment on @appointment.AppointmentDate.ToString("MM/dd/yyyy")</h5>
+    <h6>Appointment with: @appointment.DoctorToSee.FullName</h6>
+    <h6>Visual Acuity tests:</h6>
+    foreach (var va in appointment.VisualAcuityTests)
+    {
+        <p> @va.finalResultString </p>
+    }
+
+    <h6>Ocular Exam test results:</h6>
+
+    <!--KOBE, add all relevant fields here for display...maybe use a table-->
+    foreach (var oe in appointment.OcularExamTests)
+    {
+        <label>POSTERIOR SEGMENT</label>
+        <br />
+        <p><span>Vitreous: </span>@oe.Vitreous      </p>
+        <p><span>Macula: </span>@oe.Macula      </p>
+        <p><span>Vasculature: </span>@oe.Vasculature      </p>
+        <p><span>Posterior Pole: </span>@oe.PosteriorPole      </p>
+        <p><span>Peripheral Retina: </span>@oe.PeripheralRetina      </p>
+        <p><span>Misc Retina: </span>@oe.MiscRetina      </p>
+        <p><span>Diabetic Eval: </span>@oe.DiabeticEval      </p>
+        <p><span>HTN Eval: </span>@oe.HTNEval      </p>
+        <p><span>ARMD: </span>@oe.ARMD      </p>
+        <p><span>custom1: </span>@oe.custom1      </p>
+        <p><span>custom2: </span>@oe.custom2      </p>
+        <p><span>custom3: </span>@oe.custom3      </p>
+
+        <br />
+        <label>OPHTHALMIC INDICATORS</label>
+        <br />
+        <p><span>Spontaneous Venous Pulsation OD: </span>@oe.SpontaneousVenousPulsationOD      </p>
+        <p><span>Spontaneous Venous Pulsation OS: </span>@oe.SpontaneousVenousPulsationOS      </p>
+        <p><span>Foveal Reflex OD: </span>@oe.FovealReflexOD      </p>
+        <p><span>Foveal Reflex OS: </span>@oe.FovealReflexOS      </p>
+
+        <br />
+        <label>FUNDUS METHODS</label>
+        <br />
+        <p><span>Fundus Method: </span>@oe.fundusMethods[oe.FundusMethod]     </p>
+        <p><span>Fundus Dilation: </span>@oe.FundusDilation      </p>
+        <p><span>Dilating Agent: </span>@oe.DilatingAgent     </p>
+
+        <br />
+        <label>Fundus Evaluation:</label>
+        <br />
+        <p><span>78D Lens: </span>@oe.FundusEvaluation78D      </p>
+        <p><span>90D Lens: </span>@oe.FundusEvaluation90D      </p>
+        <p><span>20D BIO Lens: </span>@oe.FundusEvaluation20D      </p>
+        <p><span>PR 2.2 BIO Lens: </span>@oe.FundusEvaluationPR      </p>
+        <p><span>Scleral Depression: </span>@oe.FundusEvaluationScleral      </p>
+        <p><span>Direct Ophthalmoscope: </span>@oe.FundusEvaluationOtherString      </p>
+
+        <br />
+        <label>Fundus Notes:</label>
+        <br />
+        <p><span>Advised: </span>@oe.FundusNotesAdvised      </p>
+        <p><span>Rescheduled: </span>@oe.FundusNotesRescheduled      </p>
+        <p><span>Declined: </span>@oe.FundusNotesDeclined      </p>
+        <p><span>Performed: </span>@oe.FundusNotesPerformed      </p>
+        <p><span>Refused: </span>@oe.FundusNotesRefused      </p>
+        <p><span>Not Indicated: </span>@oe.FundusNotesNotIndicated      </p>
+        <p><span>Contraindicated: </span>@oe.FundusNotesContraindicated      </p>
+        <p><span>Recent: </span>@oe.FundusNotesRecent      </p>
+
+        <br />
+        <label>CUP/DISC RATIO</label>
+        <br />
+        <p><span>OD Horizontal: </span>@oe.ODSliderHorizontal      </p>
+        <p><span>OD Vertical: </span>@oe.OSSliderHorizontal      </p>
+        <p><span>OS Horizontal: </span>@oe.ODSliderVertical      </p>
+        <p><span>OS Vertical: </span>@oe.OSSliderVertical      </p>
+
+        <br />
+        <label>OPTIC NERVE HEAD ASSESSMENT</label>
+        <br />
+        <p><span>Optic Nerve: </span>@oe.OpticNerve      </p>
+        <p><span>Nerve Fiber Layer: </span>@oe.NerveFiberLayer      </p>
+
+        <br />
+        <label>Optic Nerve Descriptors</label>
+        <br />
+        <table style="        width: 40%;">
+            <tr>
+                <th>Descriptor</th>
+                <th>OD</th>
+                <th>OS</th>
+            </tr>
+            <tr>
+                <td>Deep/Lamina</td>
+                <td>@oe.DeepLaminaOD</td>
+                <td>@oe.DeepLaminaOS</td>
+            </tr>
+            <tr>
+                <td>Shallow</td>
+                <td>@oe.ShallowOD</td>
+                <td>@oe.ShallowOS</td>
+            </tr>
+            <tr>
+                <td>Round</td>
+                <td>@oe.RoundOD</td>
+                <td>@oe.RoundOS</td>
+            </tr>
+            <tr>
+                <td>Oval</td>
+                <td>@oe.OvalOD</td>
+                <td>@oe.OvalOS</td>
+
+            </tr>
+            <tr>
+                <td>Temp. Sloping</td>
+                <td>@oe.TempSlopingOD</td>
+                <td>@oe.TempSlopingOS</td>
+
+            </tr>
+            <tr>
+                <td>Undermining</td>
+                <td>@oe.UnderminingOD</td>
+                <td>@oe.UnderminingOS</td>
+
+            </tr>
+            <tr>
+                <td>Peripap Atrophy</td>
+                <td>@oe.PeripapAtrophyOD</td>
+                <td>@oe.PeripapAtrophyOS</td>
+
+            </tr>
+            <tr>
+                <td>Scleral Cresent</td>
+                <td>@oe.ScleralCresentOD</td>
+                <td>@oe.ScleralCresentOS</td>
+
+            </tr>
+            <tr>
+                <td>Pigment Cresent</td>
+                <td>@oe.PigmentCresentOD</td>
+                <td>@oe.PigmentCresentOS</td>
+
+            </tr>
+            <tr>
+                <td>Optic Pit</td>
+                <td>@oe.OpticPitOD</td>
+                <td>@oe.OpticPitOS</td>
+
+            </tr>
+            <tr>
+                <td>Muyelination</td>
+                <td>@oe.MuyelinationOD</td>
+                <td>@oe.MuyelinationOS</td>
+
+            </tr>
+            <tr>
+                <td>Glial Remnants</td>
+                <td>@oe.GlialRemnantsOD</td>
+                <td>@oe.GlialRemnantsOS</td>
+
+            </tr>
+        </table>
+    }
+
+}
+<div>
+    <a asp-page="/md/MDPortal">To Dr. Portal</a>
+</div>

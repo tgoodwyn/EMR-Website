@@ -1,0 +1,82 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.History.MDPrescriptionModel
+@using Models;
+@{
+}
+
+<hr />
+<h3 style="margin: 35px;">Current prescription for @Model.Patient.FullName</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <style>
+            th, td {
+                padding: 15px;
+                border: 1px solid black;
+            }
+        </style>
+        @{
+            Prescription scrip = Model.Patient.Prescription;
+
+        <table style="        width: 100%;">
+            <tr>
+                <th>Measure</th>
+                <th>OD</th>
+                <th>OS</th>
+            </tr>
+            <tr>
+                <td>Sphere</td>
+                <td>@scrip.sphereOD</td>
+                <td>@scrip.sphereOS</td>
+            </tr>
+            <tr>
+                <td>Cylinder</td>
+                <td>@scrip.cylinderOD</td>
+                <td>@scrip.cylinderOS</td>
+            </tr>
+            <tr>
+                <td>Axis</td>
+                <td>@scrip.axisOD</td>
+                <td>@scrip.axisOS</td>
+            </tr>
+            <tr>
+                <td>Add</td>
+                <td>@scrip.addOD</td>
+                <td>@scrip.addOS</td>
+
+            </tr>
+            <tr>
+                <td>Prism</td>
+                <td>@scrip.prismOD</td>
+                <td>@scrip.prismOS</td>
+
+            </tr>
+            <tr>
+                <td>Prism Base</td>
+                <td>@scrip.prismBaseOD</td>
+                <td>@scrip.prismBaseOS</td>
+
+            </tr>
+            <tr>
+                <td>Near</td>
+                <td>@scrip.nearMeasurementOD /15.7''</td>
+                <td>@scrip.nearMeasurementOS /15.7''</td>
+
+            </tr>
+            <tr>
+                <td>Far</td>
+                <td>@scrip.farMeasurementOD /20</td>
+                <td>@scrip.farMeasurementOS /20</td>
+
+            </tr>
+        </table>
+        }
+
+        <br />
+    </div>
+</div>
+
+<div>
+    <a asp-page="/md/MDPortal">To Dr. Portal</a>
+</div>

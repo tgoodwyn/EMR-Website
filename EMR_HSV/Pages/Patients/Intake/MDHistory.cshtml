@@ -1,0 +1,68 @@
+﻿@page
+@model EMR_HSV.Pages.Patients.Intake.MDHistoryModel
+@using Models;
+@{
+}
+
+<hr />
+<h3 style="margin: 35px;">Medical History  of @Model.Patient.FullName</h3>
+
+<hr />
+<style>
+    h5 {
+        margin-top: 15px;
+    }
+</style>
+@{
+    MedicalHistory mh = Model.Patient.MedicalHistory;
+    <h5>Primary Care Doctor</h5>
+    <h6>@mh.PrimaryCareDoctor</h6>
+    <br />
+
+    <h5>Past treatments</h5>
+    <ul>
+
+        @*@foreach (var pt in mh.PastTreatments)*@
+        @foreach (var pt in Model.ListOfPastTreatments)
+        {
+            <li>@pt</li>
+        }
+    </ul>
+    <h5>Future treatments</h5>
+    <ul>
+
+        @*@foreach (var ft in mh.PlannedTreatments)*@
+        @foreach (var ft in Model.ListOfPlannedTreatments)
+        {
+            <li>@ft</li>
+        }
+    </ul>
+    <h5>Current medications</h5>
+    <ul>
+
+        @*@foreach (var cm in mh.CurrentMedications)*@
+        @foreach (var cm in Model.ListOfCurrentMedications)
+        {
+            <li>@cm</li>
+        }
+    </ul>
+    <h5>Prior Medical Conditions</h5>
+    <ul>
+
+        @*@foreach (var prior in mh.IllnessesAndConditions)*@
+        @foreach (var prior in Model.ListOfIllnessAndConditions)
+        {
+            <li>@prior</li>
+        }
+    </ul>
+}
+<br />
+<hr />
+<a id="past_tests" href="/Patients/History/MDPastTests?id=@Model.Patient.ID">View past tests for patient</a>
+<br />
+<a id="prescription" href="/Patients/History/MDPrescription?id=@Model.Patient.ID">View prescription for patient</a>
+<br />
+<a id="back" href="/Patients/Intake/Index">Back to list</a>
+<br />
+<hr />
+

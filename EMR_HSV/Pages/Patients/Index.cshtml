@@ -1,0 +1,134 @@
+﻿
+@page
+@model EMR_HSV.Pages.Patients.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="jumbotron">
+    <h1 class="text-center">Patient Directory</h1>
+</div>
+<h6 class="text-center">
+    <a asp-page="Create">Add New Patient</a>
+</h6>
+<hr />
+
+<div class="table-responsive table-bordered">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    First
+                </th>
+                <th>
+                    Last
+                </th>
+                <th>
+                    Date of Birth
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    State
+                </th>
+                <th>
+                    Zip Code
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Social Security Number
+                </th>
+                <th>
+                    E-Mail
+                </th>
+                <th class="text-center">More Details</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Patient)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumberPrimary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SSN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="text-center">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-@item.ID"><i class="fa fa-info-circle"></i></button>
+                        <!-- Modal -->
+                        <div id="myModal-@item.ID" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="button-box btn-group-sm text-center">
+                                            <table class="table table-condensed">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-outline-danger" role="button">Additional Information</a></td>
+                                                    </tr>
+
+                                                    @if (item.Insurance != null)
+                                                    {
+                                                        <tr>
+                                                            <td><a asp-page="../frontdesk/insurances/details" asp-route-id="@item.Insurance.Id" class="btn btn-outline-danger" role="button">Insurance Information</a></td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <td><a asp-page="/Patients/Intake/MDHistory" asp-route-id="@item.ID" class="btn btn-outline-danger" role="button">Medical History</a></td>
+                                                    </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
