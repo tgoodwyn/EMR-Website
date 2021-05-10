@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EMR_HSV.Migrations
 {
     [DbContext(typeof(EMR_HSVContext))]
-    [Migration("20210330220342_ocex_on_its_own_now_take_2")]
-    partial class ocex_on_its_own_now_take_2
+    [Migration("20210510144201_surprised_if_this_works")]
+    partial class surprised_if_this_works
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,37 +52,31 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("isWithDoctor")
                         .HasColumnType("bit");
 
+                    b.Property<string>("reasonForVisit")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("AppointmentID");
+
+                    b.HasIndex("DoctorID");
 
                     b.HasIndex("PatientID");
 
                     b.ToTable("Appointment");
                 });
 
-            modelBuilder.Entity("EMR_HSV.Models.EyeTest", b =>
+            modelBuilder.Entity("EMR_HSV.Models.Doctor", b =>
                 {
-                    b.Property<int>("EyeTestID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.HasKey("ID");
 
-                    b.Property<string>("dateOfTest")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EyeTestID");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("EyeTest");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("EyeTest");
+                    b.ToTable("Doctor");
                 });
 
             modelBuilder.Entity("EMR_HSV.Models.Insurance", b =>
@@ -124,6 +118,50 @@ namespace EMR_HSV.Migrations
                     b.ToTable("Insurance");
                 });
 
+            modelBuilder.Entity("EMR_HSV.Models.MedicalHistory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PatientID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PrimaryCareDoctor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("PatientID")
+                        .IsUnique();
+
+                    b.ToTable("MedicalHistory");
+                });
+
+            modelBuilder.Entity("EMR_HSV.Models.MedicalString", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MedicalHistoryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("fieldRef")
+                        .HasColumnType("int");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("MedicalHistoryID");
+
+                    b.ToTable("MedicalString");
+                });
+
             modelBuilder.Entity("EMR_HSV.Models.OcularExam", b =>
                 {
                     b.Property<int>("id")
@@ -131,8 +169,8 @@ namespace EMR_HSV.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ARMD")
-                        .HasColumnType("int");
+                    b.Property<string>("ARMD")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AppointmentID")
                         .HasColumnType("int");
@@ -143,20 +181,20 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("DeepLaminaOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("DiabeticEval")
-                        .HasColumnType("int");
+                    b.Property<string>("DiabeticEval")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DilatingAgent")
-                        .HasColumnType("int");
+                    b.Property<string>("DilatingAgent")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FovealReflexOD")
-                        .HasColumnType("int");
+                    b.Property<string>("FovealReflexOD")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FovealReflexOS")
-                        .HasColumnType("int");
+                    b.Property<string>("FovealReflexOS")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FundusDilation")
-                        .HasColumnType("int");
+                    b.Property<string>("FundusDilation")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("FundusEvaluation20D")
                         .HasColumnType("bit");
@@ -215,14 +253,14 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("GlialRemnantsOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("HTNEval")
-                        .HasColumnType("int");
+                    b.Property<string>("HTNEval")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Macula")
-                        .HasColumnType("int");
+                    b.Property<string>("Macula")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MiscRetina")
-                        .HasColumnType("int");
+                    b.Property<string>("MiscRetina")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("MuyelinationOD")
                         .HasColumnType("bit");
@@ -230,8 +268,8 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("MuyelinationOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("NerveFiberLayer")
-                        .HasColumnType("int");
+                    b.Property<string>("NerveFiberLayer")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("ODSliderHorizontal")
                         .HasColumnType("real");
@@ -245,8 +283,8 @@ namespace EMR_HSV.Migrations
                     b.Property<float>("OSSliderVertical")
                         .HasColumnType("real");
 
-                    b.Property<int>("OpticNerve")
-                        .HasColumnType("int");
+                    b.Property<string>("OpticNerve")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("OpticPitOD")
                         .HasColumnType("bit");
@@ -266,8 +304,8 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("PeripapAtrophyOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PeripheralRetina")
-                        .HasColumnType("int");
+                    b.Property<string>("PeripheralRetina")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PigmentCresentOD")
                         .HasColumnType("bit");
@@ -275,8 +313,8 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("PigmentCresentOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PosteriorPole")
-                        .HasColumnType("int");
+                    b.Property<string>("PosteriorPole")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("RoundOD")
                         .HasColumnType("bit");
@@ -296,11 +334,11 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("ShallowOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("SpontaneousVenousPulsationOD")
-                        .HasColumnType("int");
+                    b.Property<string>("SpontaneousVenousPulsationOD")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpontaneousVenousPulsationOS")
-                        .HasColumnType("int");
+                    b.Property<string>("SpontaneousVenousPulsationOS")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TempSlopingOD")
                         .HasColumnType("bit");
@@ -314,20 +352,20 @@ namespace EMR_HSV.Migrations
                     b.Property<bool>("UnderminingOS")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Vasculature")
-                        .HasColumnType("int");
+                    b.Property<string>("Vasculature")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Vitreous")
-                        .HasColumnType("int");
+                    b.Property<string>("Vitreous")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("custom1")
-                        .HasColumnType("int");
+                    b.Property<string>("custom1")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("custom2")
-                        .HasColumnType("int");
+                    b.Property<string>("custom2")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("custom3")
-                        .HasColumnType("int");
+                    b.Property<string>("custom3")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -385,8 +423,8 @@ namespace EMR_HSV.Migrations
                     b.Property<string>("MiddleInitial")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PatientGender")
-                        .HasColumnType("int");
+                    b.Property<string>("PatientGender")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumberPrimary")
                         .HasColumnType("nvarchar(max)");
@@ -426,105 +464,134 @@ namespace EMR_HSV.Migrations
                     b.ToTable("Patient");
                 });
 
-            modelBuilder.Entity("EMR_HSV.Models.VisualAcuity", b =>
+            modelBuilder.Entity("EMR_HSV.Models.Prescription", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AppointmentID")
+                    b.Property<float>("addOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("addOS")
+                        .HasColumnType("real");
+
+                    b.Property<float>("axisOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("axisOS")
+                        .HasColumnType("real");
+
+                    b.Property<float>("cylinderOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("cylinderOS")
+                        .HasColumnType("real");
+
+                    b.Property<int>("farMeasurementOD")
+                        .HasColumnType("int");
+
+                    b.Property<int>("farMeasurementOS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("nearMeasurementOD")
+                        .HasColumnType("int");
+
+                    b.Property<int>("nearMeasurementOS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("patientID")
+                        .HasColumnType("int");
+
+                    b.Property<float>("prismBaseOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("prismBaseOS")
+                        .HasColumnType("real");
+
+                    b.Property<float>("prismOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("prismOS")
+                        .HasColumnType("real");
+
+                    b.Property<float>("sphereOD")
+                        .HasColumnType("real");
+
+                    b.Property<float>("sphereOS")
+                        .HasColumnType("real");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("patientID")
+                        .IsUnique();
+
+                    b.ToTable("Prescription");
+                });
+
+            modelBuilder.Entity("EMR_HSV.Models.VisualAck", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("appointmentID")
                         .HasColumnType("int");
 
                     b.Property<bool>("correctorsUsed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("detailDistanceFar")
+                    b.Property<int>("distanceOrNear")
                         .HasColumnType("int");
 
-                    b.Property<int>("detailDistanceNear")
+                    b.Property<string>("finalResultString")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("measurement")
                         .HasColumnType("int");
 
-                    b.Property<int>("detailDistancePinhole")
+                    b.Property<int>("pinholeMeasurement")
                         .HasColumnType("int");
 
                     b.Property<bool>("pinholeUsed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("viewDistanceFar")
-                        .HasColumnType("int");
+                    b.HasKey("ID");
 
-                    b.Property<int>("viewDistanceNear")
-                        .HasColumnType("int");
+                    b.HasIndex("appointmentID");
 
-                    b.Property<int>("viewDistancePinhole")
-                        .HasColumnType("int");
+                    b.ToTable("VisualAck");
+                });
 
-                    b.HasKey("id");
+            modelBuilder.Entity("EMR_HSV.Models.VisualAcuity", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasIndex("AppointmentID");
+                    b.HasKey("ID");
 
                     b.ToTable("VisualAcuity");
                 });
 
-            modelBuilder.Entity("EMR_HSV.Models.Prescription", b =>
-                {
-                    b.HasBaseType("EMR_HSV.Models.EyeTest");
-
-                    b.Property<float>("add")
-                        .HasColumnType("real");
-
-                    b.Property<float>("axis")
-                        .HasColumnType("real");
-
-                    b.Property<float>("cylinder")
-                        .HasColumnType("real");
-
-                    b.Property<int>("detailDistanceFar")
-                        .HasColumnType("int");
-
-                    b.Property<int>("detailDistanceNear")
-                        .HasColumnType("int");
-
-                    b.Property<float>("prism")
-                        .HasColumnType("real");
-
-                    b.Property<float>("prismBase")
-                        .HasColumnType("real");
-
-                    b.Property<int>("specificEye")
-                        .HasColumnType("int");
-
-                    b.Property<float>("sphere")
-                        .HasColumnType("real");
-
-                    b.Property<int>("viewDistanceFar")
-                        .HasColumnType("int");
-
-                    b.Property<int>("viewDistanceNear")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Prescription");
-                });
-
             modelBuilder.Entity("EMR_HSV.Models.Appointment", b =>
                 {
+                    b.HasOne("EMR_HSV.Models.Doctor", "DoctorToSee")
+                        .WithMany("doctorsAppointments")
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EMR_HSV.Models.Patient", "Patient")
-                        .WithMany("MedicalHistory")
+                        .WithMany("PastAppointments")
                         .HasForeignKey("PatientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("EMR_HSV.Models.EyeTest", b =>
-                {
-                    b.HasOne("EMR_HSV.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("DoctorToSee");
 
                     b.Navigation("Patient");
                 });
@@ -540,22 +607,59 @@ namespace EMR_HSV.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("EMR_HSV.Models.MedicalHistory", b =>
+                {
+                    b.HasOne("EMR_HSV.Models.Patient", "Patient")
+                        .WithOne("MedicalHistory")
+                        .HasForeignKey("EMR_HSV.Models.MedicalHistory", "PatientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("EMR_HSV.Models.MedicalString", b =>
+                {
+                    b.HasOne("EMR_HSV.Models.MedicalHistory", "MedicalHistoryContainer")
+                        .WithMany("MedicalStrings")
+                        .HasForeignKey("MedicalHistoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicalHistoryContainer");
+                });
+
             modelBuilder.Entity("EMR_HSV.Models.OcularExam", b =>
                 {
-                    b.HasOne("EMR_HSV.Models.Appointment", null)
+                    b.HasOne("EMR_HSV.Models.Appointment", "Appointment")
                         .WithMany("OcularExamTests")
                         .HasForeignKey("AppointmentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Appointment");
                 });
 
-            modelBuilder.Entity("EMR_HSV.Models.VisualAcuity", b =>
+            modelBuilder.Entity("EMR_HSV.Models.Prescription", b =>
                 {
-                    b.HasOne("EMR_HSV.Models.Appointment", null)
-                        .WithMany("VisualAcuityTests")
-                        .HasForeignKey("AppointmentID")
+                    b.HasOne("EMR_HSV.Models.Patient", "Patient")
+                        .WithOne("Prescription")
+                        .HasForeignKey("EMR_HSV.Models.Prescription", "patientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("EMR_HSV.Models.VisualAck", b =>
+                {
+                    b.HasOne("EMR_HSV.Models.Appointment", "Appointment")
+                        .WithMany("VisualAcuityTests")
+                        .HasForeignKey("appointmentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
                 });
 
             modelBuilder.Entity("EMR_HSV.Models.Appointment", b =>
@@ -565,11 +669,25 @@ namespace EMR_HSV.Migrations
                     b.Navigation("VisualAcuityTests");
                 });
 
+            modelBuilder.Entity("EMR_HSV.Models.Doctor", b =>
+                {
+                    b.Navigation("doctorsAppointments");
+                });
+
+            modelBuilder.Entity("EMR_HSV.Models.MedicalHistory", b =>
+                {
+                    b.Navigation("MedicalStrings");
+                });
+
             modelBuilder.Entity("EMR_HSV.Models.Patient", b =>
                 {
                     b.Navigation("Insurance");
 
                     b.Navigation("MedicalHistory");
+
+                    b.Navigation("PastAppointments");
+
+                    b.Navigation("Prescription");
                 });
 #pragma warning restore 612, 618
         }
